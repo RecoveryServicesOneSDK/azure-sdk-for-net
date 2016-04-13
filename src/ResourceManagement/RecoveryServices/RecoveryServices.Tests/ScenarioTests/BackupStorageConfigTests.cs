@@ -43,7 +43,7 @@ namespace RecoveryServices.Tests
                 Assert.NotNull(response.Type);
                 Assert.NotNull(response.Properties.StorageType);
                 Assert.NotNull(response.Properties.StorageTypeState);
-                //Assert.NotNull(response.Properties.DedupState);
+                Assert.NotNull(response.Properties.DedupState);
 
                 Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             }
@@ -60,7 +60,7 @@ namespace RecoveryServices.Tests
                 UpdateVaultStorageTypeRequest vaultStorageRequest = new UpdateVaultStorageTypeRequest();
                 vaultStorageRequest.Properties = new StorageTypeProperties();
                 vaultStorageRequest.Properties.StorageModelType = "LocallyRedundant";
-                vaultStorageRequest.Properties.DedupState = "enabled";
+                vaultStorageRequest.Properties.DedupState = "Enabled";
 
                 AzureOperationResponse response = rsmClient.Vaults.UpdateStorageType(resourceGroupName, resourceName, 
                                                     vaultStorageRequest, RequestHeaders);
