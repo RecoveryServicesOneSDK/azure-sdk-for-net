@@ -292,6 +292,13 @@ namespace Microsoft.Azure.Management.RecoveryServices
                                 int recoveryPlanCountInstance = ((int)recoveryPlanCountValue);
                                 replicationUsagesInstance.RecoveryPlanCount = recoveryPlanCountInstance;
                             }
+                            
+                            JToken registeredServersCountValue = responseDoc["registeredServersCount"];
+                            if (registeredServersCountValue != null && registeredServersCountValue.Type != JTokenType.Null)
+                            {
+                                int registeredServersCountInstance = ((int)registeredServersCountValue);
+                                replicationUsagesInstance.RegisteredServersCount = registeredServersCountInstance;
+                            }
                         }
                         
                     }
