@@ -299,6 +299,13 @@ namespace Microsoft.Azure.Management.RecoveryServices
                                 int registeredServersCountInstance = ((int)registeredServersCountValue);
                                 replicationUsagesInstance.RegisteredServersCount = registeredServersCountInstance;
                             }
+                            
+                            JToken recoveryServicesProviderAuthTypeValue = responseDoc["recoveryServicesProviderAuthType"];
+                            if (recoveryServicesProviderAuthTypeValue != null && recoveryServicesProviderAuthTypeValue.Type != JTokenType.Null)
+                            {
+                                string recoveryServicesProviderAuthTypeInstance = ((string)recoveryServicesProviderAuthTypeValue);
+                                replicationUsagesInstance.RecoveryServicesProviderAuthType = recoveryServicesProviderAuthTypeInstance;
+                            }
                         }
                         
                     }

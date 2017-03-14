@@ -74,6 +74,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
             set { this._recoveryPlanCount = value; }
         }
         
+        private string _recoveryServicesProviderAuthType;
+        
+        /// <summary>
+        /// Optional. Gets or sets the authentication type of recovery service
+        /// providers in the vault. The possible values are Acs and Aad.
+        /// </summary>
+        public string RecoveryServicesProviderAuthType
+        {
+            get { return this._recoveryServicesProviderAuthType; }
+            set { this._recoveryServicesProviderAuthType = value; }
+        }
+        
         private int _registeredServersCount;
         
         /// <summary>
