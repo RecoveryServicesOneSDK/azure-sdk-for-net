@@ -97,6 +97,48 @@ namespace Microsoft.Azure.Management.RecoveryServices
             {
                 throw new ArgumentNullException("vaultCreationInput");
             }
+            if (vaultCreationInput.Properties != null)
+            {
+                if (vaultCreationInput.Properties.UpgradeDetails != null)
+                {
+                    if (vaultCreationInput.Properties.UpgradeDetails.EndTimeUtc == null)
+                    {
+                        throw new ArgumentNullException("vaultCreationInput.Properties.UpgradeDetails.EndTimeUtc");
+                    }
+                    if (vaultCreationInput.Properties.UpgradeDetails.LastUpdatedTimeUtc == null)
+                    {
+                        throw new ArgumentNullException("vaultCreationInput.Properties.UpgradeDetails.LastUpdatedTimeUtc");
+                    }
+                    if (vaultCreationInput.Properties.UpgradeDetails.Message == null)
+                    {
+                        throw new ArgumentNullException("vaultCreationInput.Properties.UpgradeDetails.Message");
+                    }
+                    if (vaultCreationInput.Properties.UpgradeDetails.OperationId == null)
+                    {
+                        throw new ArgumentNullException("vaultCreationInput.Properties.UpgradeDetails.OperationId");
+                    }
+                    if (vaultCreationInput.Properties.UpgradeDetails.PreviousResourceId == null)
+                    {
+                        throw new ArgumentNullException("vaultCreationInput.Properties.UpgradeDetails.PreviousResourceId");
+                    }
+                    if (vaultCreationInput.Properties.UpgradeDetails.StartTimeUtc == null)
+                    {
+                        throw new ArgumentNullException("vaultCreationInput.Properties.UpgradeDetails.StartTimeUtc");
+                    }
+                    if (vaultCreationInput.Properties.UpgradeDetails.Status == null)
+                    {
+                        throw new ArgumentNullException("vaultCreationInput.Properties.UpgradeDetails.Status");
+                    }
+                    if (vaultCreationInput.Properties.UpgradeDetails.TriggerType == null)
+                    {
+                        throw new ArgumentNullException("vaultCreationInput.Properties.UpgradeDetails.TriggerType");
+                    }
+                    if (vaultCreationInput.Properties.UpgradeDetails.UpgradedResourceId == null)
+                    {
+                        throw new ArgumentNullException("vaultCreationInput.Properties.UpgradeDetails.UpgradedResourceId");
+                    }
+                }
+            }
             
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
@@ -192,6 +234,30 @@ namespace Microsoft.Azure.Management.RecoveryServices
                     if (vaultCreationInput.Properties.ProvisioningState != null)
                     {
                         propertiesValue["provisioningState"] = vaultCreationInput.Properties.ProvisioningState;
+                    }
+                    
+                    if (vaultCreationInput.Properties.UpgradeDetails != null)
+                    {
+                        JObject upgradeDetailsValue = new JObject();
+                        propertiesValue["upgradeDetails"] = upgradeDetailsValue;
+                        
+                        upgradeDetailsValue["operationId"] = vaultCreationInput.Properties.UpgradeDetails.OperationId;
+                        
+                        upgradeDetailsValue["startTimeUtc"] = vaultCreationInput.Properties.UpgradeDetails.StartTimeUtc;
+                        
+                        upgradeDetailsValue["lastUpdatedTimeUtc"] = vaultCreationInput.Properties.UpgradeDetails.LastUpdatedTimeUtc;
+                        
+                        upgradeDetailsValue["endTimeUtc"] = vaultCreationInput.Properties.UpgradeDetails.EndTimeUtc;
+                        
+                        upgradeDetailsValue["status"] = vaultCreationInput.Properties.UpgradeDetails.Status;
+                        
+                        upgradeDetailsValue["message"] = vaultCreationInput.Properties.UpgradeDetails.Message;
+                        
+                        upgradeDetailsValue["triggerType"] = vaultCreationInput.Properties.UpgradeDetails.TriggerType;
+                        
+                        upgradeDetailsValue["upgradedResourceId"] = vaultCreationInput.Properties.UpgradeDetails.UpgradedResourceId;
+                        
+                        upgradeDetailsValue["previousResourceId"] = vaultCreationInput.Properties.UpgradeDetails.PreviousResourceId;
                     }
                 }
                 
@@ -291,6 +357,76 @@ namespace Microsoft.Azure.Management.RecoveryServices
                                 {
                                     string provisioningStateInstance = ((string)provisioningStateValue);
                                     propertiesInstance.ProvisioningState = provisioningStateInstance;
+                                }
+                                
+                                JToken upgradeDetailsValue2 = propertiesValue2["upgradeDetails"];
+                                if (upgradeDetailsValue2 != null && upgradeDetailsValue2.Type != JTokenType.Null)
+                                {
+                                    UpgradeDetails upgradeDetailsInstance = new UpgradeDetails();
+                                    propertiesInstance.UpgradeDetails = upgradeDetailsInstance;
+                                    
+                                    JToken operationIdValue = upgradeDetailsValue2["operationId"];
+                                    if (operationIdValue != null && operationIdValue.Type != JTokenType.Null)
+                                    {
+                                        string operationIdInstance = ((string)operationIdValue);
+                                        upgradeDetailsInstance.OperationId = operationIdInstance;
+                                    }
+                                    
+                                    JToken startTimeUtcValue = upgradeDetailsValue2["startTimeUtc"];
+                                    if (startTimeUtcValue != null && startTimeUtcValue.Type != JTokenType.Null)
+                                    {
+                                        string startTimeUtcInstance = ((string)startTimeUtcValue);
+                                        upgradeDetailsInstance.StartTimeUtc = startTimeUtcInstance;
+                                    }
+                                    
+                                    JToken lastUpdatedTimeUtcValue = upgradeDetailsValue2["lastUpdatedTimeUtc"];
+                                    if (lastUpdatedTimeUtcValue != null && lastUpdatedTimeUtcValue.Type != JTokenType.Null)
+                                    {
+                                        string lastUpdatedTimeUtcInstance = ((string)lastUpdatedTimeUtcValue);
+                                        upgradeDetailsInstance.LastUpdatedTimeUtc = lastUpdatedTimeUtcInstance;
+                                    }
+                                    
+                                    JToken endTimeUtcValue = upgradeDetailsValue2["endTimeUtc"];
+                                    if (endTimeUtcValue != null && endTimeUtcValue.Type != JTokenType.Null)
+                                    {
+                                        string endTimeUtcInstance = ((string)endTimeUtcValue);
+                                        upgradeDetailsInstance.EndTimeUtc = endTimeUtcInstance;
+                                    }
+                                    
+                                    JToken statusValue = upgradeDetailsValue2["status"];
+                                    if (statusValue != null && statusValue.Type != JTokenType.Null)
+                                    {
+                                        string statusInstance = ((string)statusValue);
+                                        upgradeDetailsInstance.Status = statusInstance;
+                                    }
+                                    
+                                    JToken messageValue = upgradeDetailsValue2["message"];
+                                    if (messageValue != null && messageValue.Type != JTokenType.Null)
+                                    {
+                                        string messageInstance = ((string)messageValue);
+                                        upgradeDetailsInstance.Message = messageInstance;
+                                    }
+                                    
+                                    JToken triggerTypeValue = upgradeDetailsValue2["triggerType"];
+                                    if (triggerTypeValue != null && triggerTypeValue.Type != JTokenType.Null)
+                                    {
+                                        string triggerTypeInstance = ((string)triggerTypeValue);
+                                        upgradeDetailsInstance.TriggerType = triggerTypeInstance;
+                                    }
+                                    
+                                    JToken upgradedResourceIdValue = upgradeDetailsValue2["upgradedResourceId"];
+                                    if (upgradedResourceIdValue != null && upgradedResourceIdValue.Type != JTokenType.Null)
+                                    {
+                                        string upgradedResourceIdInstance = ((string)upgradedResourceIdValue);
+                                        upgradeDetailsInstance.UpgradedResourceId = upgradedResourceIdInstance;
+                                    }
+                                    
+                                    JToken previousResourceIdValue = upgradeDetailsValue2["previousResourceId"];
+                                    if (previousResourceIdValue != null && previousResourceIdValue.Type != JTokenType.Null)
+                                    {
+                                        string previousResourceIdInstance = ((string)previousResourceIdValue);
+                                        upgradeDetailsInstance.PreviousResourceId = previousResourceIdInstance;
+                                    }
                                 }
                             }
                             
@@ -878,6 +1014,76 @@ namespace Microsoft.Azure.Management.RecoveryServices
                                 {
                                     string provisioningStateInstance = ((string)provisioningStateValue);
                                     propertiesInstance.ProvisioningState = provisioningStateInstance;
+                                }
+                                
+                                JToken upgradeDetailsValue = propertiesValue["upgradeDetails"];
+                                if (upgradeDetailsValue != null && upgradeDetailsValue.Type != JTokenType.Null)
+                                {
+                                    UpgradeDetails upgradeDetailsInstance = new UpgradeDetails();
+                                    propertiesInstance.UpgradeDetails = upgradeDetailsInstance;
+                                    
+                                    JToken operationIdValue = upgradeDetailsValue["operationId"];
+                                    if (operationIdValue != null && operationIdValue.Type != JTokenType.Null)
+                                    {
+                                        string operationIdInstance = ((string)operationIdValue);
+                                        upgradeDetailsInstance.OperationId = operationIdInstance;
+                                    }
+                                    
+                                    JToken startTimeUtcValue = upgradeDetailsValue["startTimeUtc"];
+                                    if (startTimeUtcValue != null && startTimeUtcValue.Type != JTokenType.Null)
+                                    {
+                                        string startTimeUtcInstance = ((string)startTimeUtcValue);
+                                        upgradeDetailsInstance.StartTimeUtc = startTimeUtcInstance;
+                                    }
+                                    
+                                    JToken lastUpdatedTimeUtcValue = upgradeDetailsValue["lastUpdatedTimeUtc"];
+                                    if (lastUpdatedTimeUtcValue != null && lastUpdatedTimeUtcValue.Type != JTokenType.Null)
+                                    {
+                                        string lastUpdatedTimeUtcInstance = ((string)lastUpdatedTimeUtcValue);
+                                        upgradeDetailsInstance.LastUpdatedTimeUtc = lastUpdatedTimeUtcInstance;
+                                    }
+                                    
+                                    JToken endTimeUtcValue = upgradeDetailsValue["endTimeUtc"];
+                                    if (endTimeUtcValue != null && endTimeUtcValue.Type != JTokenType.Null)
+                                    {
+                                        string endTimeUtcInstance = ((string)endTimeUtcValue);
+                                        upgradeDetailsInstance.EndTimeUtc = endTimeUtcInstance;
+                                    }
+                                    
+                                    JToken statusValue = upgradeDetailsValue["status"];
+                                    if (statusValue != null && statusValue.Type != JTokenType.Null)
+                                    {
+                                        string statusInstance = ((string)statusValue);
+                                        upgradeDetailsInstance.Status = statusInstance;
+                                    }
+                                    
+                                    JToken messageValue = upgradeDetailsValue["message"];
+                                    if (messageValue != null && messageValue.Type != JTokenType.Null)
+                                    {
+                                        string messageInstance = ((string)messageValue);
+                                        upgradeDetailsInstance.Message = messageInstance;
+                                    }
+                                    
+                                    JToken triggerTypeValue = upgradeDetailsValue["triggerType"];
+                                    if (triggerTypeValue != null && triggerTypeValue.Type != JTokenType.Null)
+                                    {
+                                        string triggerTypeInstance = ((string)triggerTypeValue);
+                                        upgradeDetailsInstance.TriggerType = triggerTypeInstance;
+                                    }
+                                    
+                                    JToken upgradedResourceIdValue = upgradeDetailsValue["upgradedResourceId"];
+                                    if (upgradedResourceIdValue != null && upgradedResourceIdValue.Type != JTokenType.Null)
+                                    {
+                                        string upgradedResourceIdInstance = ((string)upgradedResourceIdValue);
+                                        upgradeDetailsInstance.UpgradedResourceId = upgradedResourceIdInstance;
+                                    }
+                                    
+                                    JToken previousResourceIdValue = upgradeDetailsValue["previousResourceId"];
+                                    if (previousResourceIdValue != null && previousResourceIdValue.Type != JTokenType.Null)
+                                    {
+                                        string previousResourceIdInstance = ((string)previousResourceIdValue);
+                                        upgradeDetailsInstance.PreviousResourceId = previousResourceIdInstance;
+                                    }
                                 }
                             }
                             
@@ -1723,6 +1929,76 @@ namespace Microsoft.Azure.Management.RecoveryServices
                                         {
                                             string provisioningStateInstance = ((string)provisioningStateValue);
                                             propertiesInstance.ProvisioningState = provisioningStateInstance;
+                                        }
+                                        
+                                        JToken upgradeDetailsValue = propertiesValue["upgradeDetails"];
+                                        if (upgradeDetailsValue != null && upgradeDetailsValue.Type != JTokenType.Null)
+                                        {
+                                            UpgradeDetails upgradeDetailsInstance = new UpgradeDetails();
+                                            propertiesInstance.UpgradeDetails = upgradeDetailsInstance;
+                                            
+                                            JToken operationIdValue = upgradeDetailsValue["operationId"];
+                                            if (operationIdValue != null && operationIdValue.Type != JTokenType.Null)
+                                            {
+                                                string operationIdInstance = ((string)operationIdValue);
+                                                upgradeDetailsInstance.OperationId = operationIdInstance;
+                                            }
+                                            
+                                            JToken startTimeUtcValue = upgradeDetailsValue["startTimeUtc"];
+                                            if (startTimeUtcValue != null && startTimeUtcValue.Type != JTokenType.Null)
+                                            {
+                                                string startTimeUtcInstance = ((string)startTimeUtcValue);
+                                                upgradeDetailsInstance.StartTimeUtc = startTimeUtcInstance;
+                                            }
+                                            
+                                            JToken lastUpdatedTimeUtcValue = upgradeDetailsValue["lastUpdatedTimeUtc"];
+                                            if (lastUpdatedTimeUtcValue != null && lastUpdatedTimeUtcValue.Type != JTokenType.Null)
+                                            {
+                                                string lastUpdatedTimeUtcInstance = ((string)lastUpdatedTimeUtcValue);
+                                                upgradeDetailsInstance.LastUpdatedTimeUtc = lastUpdatedTimeUtcInstance;
+                                            }
+                                            
+                                            JToken endTimeUtcValue = upgradeDetailsValue["endTimeUtc"];
+                                            if (endTimeUtcValue != null && endTimeUtcValue.Type != JTokenType.Null)
+                                            {
+                                                string endTimeUtcInstance = ((string)endTimeUtcValue);
+                                                upgradeDetailsInstance.EndTimeUtc = endTimeUtcInstance;
+                                            }
+                                            
+                                            JToken statusValue = upgradeDetailsValue["status"];
+                                            if (statusValue != null && statusValue.Type != JTokenType.Null)
+                                            {
+                                                string statusInstance = ((string)statusValue);
+                                                upgradeDetailsInstance.Status = statusInstance;
+                                            }
+                                            
+                                            JToken messageValue = upgradeDetailsValue["message"];
+                                            if (messageValue != null && messageValue.Type != JTokenType.Null)
+                                            {
+                                                string messageInstance = ((string)messageValue);
+                                                upgradeDetailsInstance.Message = messageInstance;
+                                            }
+                                            
+                                            JToken triggerTypeValue = upgradeDetailsValue["triggerType"];
+                                            if (triggerTypeValue != null && triggerTypeValue.Type != JTokenType.Null)
+                                            {
+                                                string triggerTypeInstance = ((string)triggerTypeValue);
+                                                upgradeDetailsInstance.TriggerType = triggerTypeInstance;
+                                            }
+                                            
+                                            JToken upgradedResourceIdValue = upgradeDetailsValue["upgradedResourceId"];
+                                            if (upgradedResourceIdValue != null && upgradedResourceIdValue.Type != JTokenType.Null)
+                                            {
+                                                string upgradedResourceIdInstance = ((string)upgradedResourceIdValue);
+                                                upgradeDetailsInstance.UpgradedResourceId = upgradedResourceIdInstance;
+                                            }
+                                            
+                                            JToken previousResourceIdValue = upgradeDetailsValue["previousResourceId"];
+                                            if (previousResourceIdValue != null && previousResourceIdValue.Type != JTokenType.Null)
+                                            {
+                                                string previousResourceIdInstance = ((string)previousResourceIdValue);
+                                                upgradeDetailsInstance.PreviousResourceId = previousResourceIdInstance;
+                                            }
                                         }
                                     }
                                     

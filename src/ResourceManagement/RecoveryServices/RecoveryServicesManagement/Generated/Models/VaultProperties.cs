@@ -21,6 +21,7 @@
 
 using System;
 using System.Linq;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Management.RecoveryServices.Models
 {
@@ -38,6 +39,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         {
             get { return this._provisioningState; }
             set { this._provisioningState = value; }
+        }
+        
+        private UpgradeDetails _upgradeDetails;
+        
+        /// <summary>
+        /// Optional. Provisioning State
+        /// </summary>
+        public UpgradeDetails UpgradeDetails
+        {
+            get { return this._upgradeDetails; }
+            set { this._upgradeDetails = value; }
         }
         
         /// <summary>
